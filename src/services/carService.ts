@@ -23,12 +23,20 @@ class CarService implements IService<ICar> {
 
   async readOne(_id: string): Promise<ICar | null> {
     const car = await this._carModel.readOne(_id);
-    
+
     if (!car) {
       throw Error(ErrorTypes.NotFound);
     }
     
     return car;
+  }
+
+  async update(_id: string, data: ICar): Promise<ICar | null> {
+    const parsed = ICarZodSchema.safeParse(data);
+    if (!parsed.success) throw parsed.error;
+    await this.readOne(_id);
+ 
+    return this._carModel.update(_id, parsed.data);
   }
 }
 

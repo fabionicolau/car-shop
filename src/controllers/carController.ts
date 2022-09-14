@@ -36,6 +36,15 @@ class CarController {
       errorHandler(error as Error | ZodError, req, res, next);
     }
   }
+
+  async update(req: Request, res: Response<ICar>, next: NextFunction): Promise<void> {
+    try {
+      const updatedCar = await this._service.update(req.params.id, req.body);
+      res.status(200).json(updatedCar as ICar);
+    } catch (error) {
+      errorHandler(error as Error | ZodError, req, res, next);
+    }
+  }
 }
 
 export default CarController;

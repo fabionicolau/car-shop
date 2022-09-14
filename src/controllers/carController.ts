@@ -27,6 +27,15 @@ class CarController {
       errorHandler(error as Error | ZodError, req, res, next);
     }
   }
+
+  async readOne(req: Request, res: Response<ICar>, next: NextFunction): Promise<void> {
+    try {
+      const car = await this._service.readOne(req.params.id);
+      res.status(200).json(car as ICar);
+    } catch (error) {
+      errorHandler(error as Error | ZodError, req, res, next);
+    }
+  }
 }
 
 export default CarController;

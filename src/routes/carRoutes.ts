@@ -7,5 +7,7 @@ route.post('/cars', async (req: Request, res: Response, next: NextFunction) =>
   carController.create(req, res, next));
 route.get('/cars', async (req: Request, res: Response, next: NextFunction) => 
   carController.read(req, res, next));
+route.get('/cars/:id', async (req: Request, res: Response, next: NextFunction) => 
+  carController.readOne(req, res, next));
 
 export default route;

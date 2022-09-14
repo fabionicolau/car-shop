@@ -49,6 +49,7 @@ class CarController {
   async delete(req: Request, res: Response<ICar>, next: NextFunction): Promise<void> {
     try {
       await this._service.delete(req.params.id);
+
       res.status(204).end();
     } catch (error) {
       errorHandler(error as Error | ZodError, req, res, next);

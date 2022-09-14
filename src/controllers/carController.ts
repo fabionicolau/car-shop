@@ -18,6 +18,15 @@ class CarController {
       errorHandler(error as Error | ZodError, req, res, next);
     }
   }
+
+  async read(req: Request, res: Response<ICar[]>, next: NextFunction): Promise<void> {
+    try {
+      const AllCars = await this._service.read();
+      res.status(200).json(AllCars);
+    } catch (error) {
+      errorHandler(error as Error | ZodError, req, res, next);
+    }
+  }
 }
 
 export default CarController;

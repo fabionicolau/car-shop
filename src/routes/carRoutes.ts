@@ -5,5 +5,7 @@ const route = Router();
 
 route.post('/cars', async (req: Request, res: Response, next: NextFunction) => 
   carController.create(req, res, next));
+route.get('/cars', async (req: Request, res: Response, next: NextFunction) => 
+  carController.read(req, res, next));
 
 export default route;

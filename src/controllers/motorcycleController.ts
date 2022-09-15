@@ -45,6 +45,15 @@ class MotorcycleController {
       errorHandler(error as Error | ZodError, req, res, next);
     }
   }
+
+  async delete(req: Request, res: Response<IMotorcycle>, next: NextFunction): Promise<void> {
+    try {
+      await this._service.delete(req.params.id);
+      res.status(204).end();
+    } catch (error) {
+      errorHandler(error as Error | ZodError, req, res, next);
+    }
+  }
 }
 
 export default MotorcycleController;

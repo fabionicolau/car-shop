@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import carController from '../factory';
+import { carController } from '../factory';
 
 const route = Router();
 

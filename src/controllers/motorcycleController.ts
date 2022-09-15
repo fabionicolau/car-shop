@@ -18,6 +18,15 @@ class MotorcycleController {
       errorHandler(error as Error | ZodError, req, res, next);
     }
   }
+
+  async read(req: Request, res: Response<IMotorcycle[]>, next: NextFunction): Promise<void> {
+    try {
+      const motorcycles = await this._service.read();
+      res.status(200).json(motorcycles);
+    } catch (error) {
+      errorHandler(error as Error | ZodError, req, res, next);
+    }
+  }
 }
 
 export default MotorcycleController;

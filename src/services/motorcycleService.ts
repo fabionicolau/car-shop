@@ -15,6 +15,10 @@ class MotorcycleService implements IService<IMotorcycle> {
 
     return this._motorcycleModel.create(parsed.data);
   }
+
+  async read(): Promise<IMotorcycle[]> {
+    return this._motorcycleModel.read();
+  }
 }
 
 export default MotorcycleService;

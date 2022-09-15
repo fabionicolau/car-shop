@@ -1,3 +1,4 @@
+import { ErrorTypes } from '../helpers/errorCatalog';
 import { IModel } from '../interfaces/IModel';
 import { IMotorcycleZodSchema, IMotorcycle } from '../interfaces/IMotorcycle';
 import { IService } from '../interfaces/IService';
@@ -18,6 +19,15 @@ class MotorcycleService implements IService<IMotorcycle> {
 
   async read(): Promise<IMotorcycle[]> {
     return this._motorcycleModel.read();
+  }
+
+  async readOne(_id: string): Promise<IMotorcycle | null> {
+    const motorcycle = await this._motorcycleModel.readOne(_id);
+
+    if (!motorcycle) {
+      throw Error(ErrorTypes.NotFound);
+    }
+    return motorcycle;
   }
 }
 

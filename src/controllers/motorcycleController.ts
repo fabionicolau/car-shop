@@ -27,6 +27,15 @@ class MotorcycleController {
       errorHandler(error as Error | ZodError, req, res, next);
     }
   }
+
+  async readOne(req: Request, res: Response<IMotorcycle>, next: NextFunction): Promise<void> {
+    try {
+      const motorcycle = await this._service.readOne(req.params.id);
+      res.status(200).json(motorcycle as IMotorcycle);
+    } catch (error) {
+      errorHandler(error as Error | ZodError, req, res, next);
+    }
+  }
 }
 
 export default MotorcycleController;

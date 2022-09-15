@@ -36,6 +36,15 @@ class MotorcycleController {
       errorHandler(error as Error | ZodError, req, res, next);
     }
   }
+
+  async update(req: Request, res: Response<IMotorcycle>, next: NextFunction): Promise<void> {
+    try {
+      const updatedMotorcycle = await this._service.update(req.params.id, req.body);
+      res.status(200).json(updatedMotorcycle as IMotorcycle);
+    } catch (error) {
+      errorHandler(error as Error | ZodError, req, res, next);
+    }
+  }
 }
 
 export default MotorcycleController;

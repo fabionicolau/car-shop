@@ -29,6 +29,15 @@ class MotorcycleService implements IService<IMotorcycle> {
     }
     return motorcycle;
   }
+
+  async update(_id: string, data: IMotorcycle): Promise<IMotorcycle | null> {
+    const parsed = IMotorcycleZodSchema.safeParse(data);
+    if (!parsed.success) throw parsed.error;
+
+    await this.readOne(_id);
+
+    return this._motorcycleModel.update(_id, parsed.data);
+  }
 }
 
 export default MotorcycleService;

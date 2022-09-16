@@ -1,6 +1,7 @@
 <h1>Sobre</h1>
 <p>Décimo segundo projeto do módulo 3 - Back-end, da <a href="https://betrybe.com" target="_blank">Trybe!</a></p>
 <p>Dessa vez foi o projeto Car Shop. O desafio foi aplicar os princípios de Programação Orientada a Objetos (POO) para a construção de uma API com CRUD para gerenciar uma concessionária de veículos. Isso foi feito utilizando o banco de dados MongoDB, usando o ODM Mongoose.</p>
+<p>Além disso, a aplicação foi desenvolvida garantindo uma cobertura de testes de 60% em cada camada (Model, Service e Controller)</p>
 
 <h1>Instalando</h1>
 
